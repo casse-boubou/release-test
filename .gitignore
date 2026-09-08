@@ -1,0 +1,12 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+/bin
+/include
+/lib
+/Dockerfile
+/pyvenv.cfg
+/src/temp
+**/__pycache__
+node_modules
+**/dist
+.DS_Store
+Thumbs.db

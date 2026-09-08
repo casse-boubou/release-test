@@ -1,0 +1,12 @@
+#!/bin/sh
+# healthcheck
+
+
+# Check Docker listening is running
+SERVER_PID=$(pgrep -f "docker events --filter container=$CONTAINER_WATCHING --format \{\{.Action\}\}")
+if [ -z "$SERVER_PID" ]; then
+    exit 1
+fi
+
+
+exit 0

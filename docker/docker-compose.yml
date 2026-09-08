@@ -1,0 +1,24 @@
+services:
+  vpn_watcher:
+    container_name: vpn_watcher
+    image: ghcr.io/casse-boubou/vpn-watcher:v1.1.1@sha256:8582cf1ef99303983f7d90964d19e91bfb16e05261ea19ebda2c3332db0dfa54
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges=true
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 128M
+    environment:
+      - TZ=Etc/UTC
+      - TRUENAS_IP=${NENYA_IP}                                            # IP of TrueNas instance
+      - TRUENAS_USER=TRUENAS_USERNAME                                     # required for version 26+
+      - TRUENAS_API_KEY=${TrueNas_API_KEY}                                # require to interact with the truenas api
+      - QBITTORRENT_URLPORT=http://gluetun:${qbittorrent_WebUI_PORT}      # address at which qBitTorrent can be reached through the VPN
+      - QBITTORRENT_API_KEY=${qbittorrent_API_KEY}                        # API_KEY for qBitTorrent WebUI
+      - TRUENAS_APP_VPN=vpn                                               # name of the app containing the Gluetun container in Truenas
+      - TRUENAS_APP_DEPENDANT=arr-apps                                    # name of the app containing the Gluetun network dependant in Truenas
+      - CONTAINER_WATCHING=gluetun                                        # name of the Gluetun container
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro

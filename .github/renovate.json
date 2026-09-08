@@ -1,0 +1,50 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>casse-boubou/.github//.github/renovate.json",
+    "docker:pinDigests"
+  ],
+  "internalChecksFilter": "none",
+  "internalChecksAsSuccess": true,
+  "hostRules": [
+    {
+      "matchHost": "ghcr.io",
+      "hostType": "docker",
+      "username": "casse-boubou",
+      "password": "{{ secrets.GHCR_TOKEN_PRIVATE_REPO }}"
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/(^|/)Dockerfile$/"],
+      "datasourceTemplate": "repology",
+      "packageNameTemplate": "alpine_3_24/{{package}}",
+      "depNameTemplate": "{{package}}",
+      "matchStrings": [
+        "\\s(?<package>[a-z0-9][a-z0-9-_]+)=(?<currentValue>[a-z0-9-_.]+)\\s"
+      ],
+      "versioningTemplate": "apk"
+    },
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/(^|/)Dockerfile$/"],
+      "datasourceTemplate": "github-tags",
+      "packageNameTemplate": "nginx-proxy/docker-gen",
+      "depNameTemplate": "DockerGen",
+      "matchStrings": [
+        "(ARG)\\s(DOCKER_GEN.*_VERSION)=\"(?<currentValue>[0-9]+\\.[0-9]+(\\.[0-9]+){0,1})\"\\n"
+      ],
+      "versioningTemplate": "semver"
+    }
+  ],
+  "packageRules": [
+    {
+      "matchManagers": ["custom.regex"],
+      "matchDatasources": ["github-tags"],
+      "matchDepNames": ["DockerGen"],
+      "commitMessagePrefix": "✨",
+      "commitMessageTopic": "{{depName}}"
+    }
+  ]
+}
