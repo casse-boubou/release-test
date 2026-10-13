@@ -24,5 +24,3 @@ jobs:
         with:
           configurationFile: .github/renovate.json
           token: ${{ secrets.RENOVATE_TOKEN }}
-        env:
-          GHCR_TOKEN_PRIVATE_REPO: ${{ secrets.GHCR_TOKEN_PRIVATE_REPO }}
