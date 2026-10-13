@@ -4,7 +4,6 @@
     "github>casse-boubou/.github//.github/renovate.json",
     "docker:pinDigests"
   ],
-  "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
   "internalChecksFilter": "none",
   "internalChecksAsSuccess": true,
   "hostRules": [
