@@ -5,7 +5,6 @@
     "docker:pinDigests"
   ],
   "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
-  "repositories": ["casse-boubou/release-test"],
   "internalChecksFilter": "none",
   "internalChecksAsSuccess": true,
   "hostRules": [
