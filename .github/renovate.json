@@ -11,7 +11,7 @@
       "matchHost": "ghcr.io",
       "hostType": "docker",
       "username": "casse-boubou",
-      "token": "{{ secrets.GHCR_TOKEN_PRIVATE_REPO }}"
+      "password": "{{ process.env.GHCR_TOKEN_PRIVATE_REPO }}"
     }
   ],
   "customManagers": [
