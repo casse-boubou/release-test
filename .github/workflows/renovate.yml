@@ -25,5 +25,6 @@ jobs:
           configurationFile: .github/renovate-config.json
           token: ${{ secrets.RENOVATE_TOKEN }}
         env:
-          GHCR_TOKEN_PRIVATE_REPO: ${{ secrets.GHCR_TOKEN_PRIVATE_REPO }}
         #   LOG_LEVEL: 'debug'
+          RENOVATE_DOCKER_GHCR_IO_USERNAME: casse-boubou
+          RENOVATE_DOCKER_GHCR_IO_PASSWORD: ${{ secrets.GHCR_TOKEN_PRIVATE_REPO }}

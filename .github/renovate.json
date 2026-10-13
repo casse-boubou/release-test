@@ -6,14 +6,6 @@
   ],
   "internalChecksFilter": "none",
   "internalChecksAsSuccess": true,
-  "hostRules": [
-    {
-      "matchHost": "ghcr.io",
-      "hostType": "docker",
-      "username": "casse-boubou",
-      "password": "{{ process.env.GHCR_TOKEN_PRIVATE_REPO }}"
-    }
-  ],
   "customManagers": [
     {
       "customType": "regex",
