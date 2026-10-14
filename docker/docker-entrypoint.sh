@@ -1,12 +1,12 @@
 #!/bin/sh
 
 echo "VPN-Watcher version: ${CONTAINER_BUILD_VERSION}"
-
-
-##################################
-## CHECK IF ENVIRONMENT VARIABLES ARE CONFIGURED
-##################################
 echo "Initialization.."
+
+
+##################################
+## CHECK IF REQUIRED ENVIRONMENT VARIABLES ARE CONFIGURED
+##################################
 EMPTY_ENV=""
 if [ -z "$TRUENAS_IP" ]; then
     EMPTY_ENV=$EMPTY_ENV"TRUENAS_IP "
