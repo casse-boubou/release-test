@@ -82,8 +82,7 @@
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["pin", "pinDigest"],
       "addLabels": ["pin"],
-      "commitMessagePrefix": "📌",
-      "groupName": "pin-github-action"
+      "commitMessagePrefix": "📌"
     }
   ],
 
