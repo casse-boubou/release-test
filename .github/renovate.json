@@ -74,7 +74,7 @@
     {
       "matchFileNames": ["**/Dockerfile"],
       "matchDepNames": ["alpine"],
-      "groupName": null,
+      "extractVersion": "^(?<version>\\d+\\_\\d+)",
       "bumpVersions": [
         {
           "name": "Synchronize Alpine with version in dockerfile",
@@ -84,7 +84,8 @@
             "\"packageNameTemplate\":\\s*\"alpine_(?<version>[0-9]{1}_[0-9]{2})/\\{\\{package\\}\\}\""
           ]
         }
-      ]
+      ],
+      "groupName": null
     },
     {
       "matchManagers": ["custom.regex"],
