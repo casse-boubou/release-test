@@ -67,14 +67,7 @@
       "automerge": false
     },
     {
-      "matchManagers": ["dockerfile"],
-      "matchDatasources": ["docker"],
-      "addLabels": ["docker-images"],
-      "commitMessageTopic": "docker {{packageName}} image",
-      "groupName": null
-    },
-    {
-      "matchManagers": ["docker-compose"],
+      "matchManagers": ["dockerfile", "docker-compose"],
       "matchDatasources": ["docker"],
       "addLabels": ["docker-images"],
       "commitMessageTopic": "docker {{packageName}} image",
