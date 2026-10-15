@@ -23,7 +23,15 @@
     {
       "matchUpdateTypes": ["pin", "pinDigest"],
       "addLabels": ["pin"],
-      "commitMessagePrefix": "📌"
+      "commitMessagePrefix": "📌",
+      "groupName": "pin-dependencies"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["pin", "pinDigest"],
+      "addLabels": ["pin"],
+      "commitMessagePrefix": "📌",
+      "groupName": "pin-github-action"
     },
     {
       "matchManagers": ["github-actions"],
