@@ -1,0 +1,52 @@
+---
+name-template: "v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+sort-direction: ascending
+
+categories:
+  - title: "🚨 Breaking changes"
+    semver-increment: "major"
+    when:
+      labels:
+        - "breaking-change"
+  - title: "✨ New features"
+    semver-increment: "minor"
+    when:
+      labels:
+        - "new-feature"
+  - title: "🐛 Bug fixes"
+    semver-increment: "patch"
+    when:
+      labels:
+        - "bugfix"
+  - title: "🚀 Enhancements"
+    semver-increment: "patch"
+    when:
+      labels:
+        - "enhancement"
+        - "refactor"
+        - "performance"
+        - "chore"
+  - title: "🧰 Maintenance"
+    semver-increment: "patch"
+    when:
+      labels:
+        - "maintenance"
+        - "ci"
+  - title: "📚 Documentation"
+    semver-increment: "patch"
+    when:
+      labels:
+        - "documentation"
+  - title: "⬆️ Dependency updates"
+    semver-increment: "patch"
+    when:
+      labels:
+        - "dependencies"
+
+template: |
+  ## What’s changed
+
+  $CHANGES
+
