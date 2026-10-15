@@ -19,84 +19,84 @@
   "prCreation": "not-pending",
   "rebaseWhen": "behind-base-branch",
   "dependencyDashboardLabels": ["dependencies"],
-  // "packageRules": [
-  //   {
-  //     "matchUpdateTypes": ["major"],
-  //     "addLabels": ["major"],
-  //     "commitMessagePrefix": "⬆️ MAJOR",
-  //     "groupName": null
-  //   },
-  //   {
-  //     "matchUpdateTypes": ["minor"],
-  //     "addLabels": ["minor"],
-  //     "commitMessagePrefix": "⬆️",
-  //     "groupName": null
-  //   },
-  //   {
-  //     "matchUpdateTypes": ["patch"],
-  //     "addLabels": ["patch"],
-  //     "commitMessagePrefix": "⬆️",
-  //     "groupName": null
-  //   },
-  //   {
-  //     "matchManagers": ["github-actions"],
-  //     "matchUpdateTypes": ["major"],
-  //     "addLabels": ["github-actions"],
-  //     "commitMessageTopic": "github-actions {{packageName}}",
-  //     "groupName": "github-actions major",
-  //     "rebaseWhen": "conflicted"
-  //   },
-  //   {
-  //     "matchManagers": ["github-actions"],
-  //     "matchUpdateTypes": ["minor"],
-  //     "addLabels": ["github-actions"],
-  //     "commitMessageTopic": "github-actions {{packageName}}",
-  //     "groupName": "github-actions minor",
-  //     "rebaseWhen": "conflicted",
-  //     // "automerge": true
-  //     "automerge": false
-  //   },
-  //   {
-  //     "matchManagers": ["github-actions"],
-  //     "matchUpdateTypes": ["patch"],
-  //     "addLabels": ["github-actions"],
-  //     "commitMessageTopic": "github-actions {{packageName}}",
-  //     "groupName": "github-actions patch",
-  //     "rebaseWhen": "conflicted",
-  //     // "automerge": true
-  //     "automerge": false
-  //   },
-  //   {
-  //     "matchManagers": ["dockerfile", "docker-compose"],
-  //     "matchDatasources": ["docker"],
-  //     "addLabels": ["docker-images"],
-  //     "commitMessageTopic": "docker {{packageName}} image",
-  //     "groupName": null
-  //   },
-  //   {
-  //     "matchManagers": ["custom.regex"],
-  //     "matchDatasources": ["repology"],
-  //     "addLabels": ["packages"],
-  //     "commitMessageTopic": "package {{depName}}",
-  //     "groupName": null
-  //   },
-  //   {
-  //     "matchManagers": ["custom.regex"],
-  //     "matchDatasources": ["github-tags"],
-  //     "matchDepNames": ["DockerGen"],
-  //     "addLabels": ["app"],
-  //     "commitMessagePrefix": "✨",
-  //     "commitMessageTopic": "app {{depName}}",
-  //     "groupName": null
-  //   },
-  //   {
-  //     "matchManagers": ["github-actions", "dockerfile"],
-  //     "matchUpdateTypes": ["pin", "pinDigest"],
-  //     "addLabels": ["pin"],
-  //     "commitMessagePrefix": "📌",
-  //     "groupName": "pin-dependencies"
-  //   }
-  // ],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["major"],
+      "commitMessagePrefix": "⬆️ MAJOR",
+      "groupName": null
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "addLabels": ["minor"],
+      "commitMessagePrefix": "⬆️",
+      "groupName": null
+    },
+    {
+      "matchUpdateTypes": ["patch"],
+      "addLabels": ["patch"],
+      "commitMessagePrefix": "⬆️",
+      "groupName": null
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["github-actions"],
+      "commitMessageTopic": "github-actions {{packageName}}",
+      "groupName": "github-actions major",
+      "rebaseWhen": "conflicted"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor"],
+      "addLabels": ["github-actions"],
+      "commitMessageTopic": "github-actions {{packageName}}",
+      "groupName": "github-actions minor",
+      "rebaseWhen": "conflicted",
+      // "automerge": true
+      "automerge": false
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["patch"],
+      "addLabels": ["github-actions"],
+      "commitMessageTopic": "github-actions {{packageName}}",
+      "groupName": "github-actions patch",
+      "rebaseWhen": "conflicted",
+      // "automerge": true
+      "automerge": false
+    },
+    {
+      "matchManagers": ["dockerfile", "docker-compose"],
+      "matchDatasources": ["docker"],
+      "addLabels": ["docker-images"],
+      "commitMessageTopic": "docker {{packageName}} image",
+      "groupName": null
+    },
+    {
+      "matchManagers": ["custom.regex"],
+      "matchDatasources": ["repology"],
+      "addLabels": ["packages"],
+      "commitMessageTopic": "package {{depName}}",
+      "groupName": null
+    },
+    {
+      "matchManagers": ["custom.regex"],
+      "matchDatasources": ["github-tags"],
+      "matchDepNames": ["DockerGen"],
+      "addLabels": ["app"],
+      "commitMessagePrefix": "✨",
+      "commitMessageTopic": "app {{depName}}",
+      "groupName": null
+    },
+    {
+      "matchManagers": ["github-actions", "dockerfile"],
+      "matchUpdateTypes": ["pin", "pinDigest"],
+      "addLabels": ["pin"],
+      "commitMessagePrefix": "📌",
+      "groupName": "pin-dependencies"
+    }
+  ],
 
   "internalChecksFilter": "none",
   "internalChecksAsSuccess": true,
