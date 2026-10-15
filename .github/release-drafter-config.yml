@@ -1,9 +1,8 @@
 ---
 name-template: "v$RESOLVED_VERSION"
 tag-template: "v$RESOLVED_VERSION"
-# change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
 change-template: "- $TITLE (#$NUMBER) by $AUTHORS"
-sort-direction: ascending
+sort-direction: descending
 
 categories:
   - title: "🚨 Breaking changes"
