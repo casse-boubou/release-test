@@ -74,6 +74,13 @@
       "groupName": null
     },
     {
+      "matchManagers": ["docker-compose"],
+      "matchDatasources": ["docker"],
+      "addLabels": ["docker-images"],
+      "commitMessageTopic": "docker {{packageName}} image",
+      "groupName": null
+    },
+    {
       "matchManagers": ["custom.regex"],
       "matchDatasources": ["repology"],
       "addLabels": ["packages"],
