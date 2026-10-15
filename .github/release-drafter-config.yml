@@ -45,8 +45,11 @@ categories:
       labels:
         - "dependencies"
 
+
+  # **Full Changelog**: https://github.com/casse-boubou/addon-rustdesk-server/compare/v0.2.3...v0.2.4
 template: |
   ## What’s changed
+  **Full Changelog**: $REPOSITORY/compare/$PREVIOUS_TAG...$RESOLVED_TAG
 
   $CHANGES
 
