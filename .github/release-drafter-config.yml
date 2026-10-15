@@ -50,6 +50,7 @@ categories:
 template: |
   ## What’s changed
   **Full Changelog**: $REPOSITORY/compare/$PREVIOUS_TAG...$RESOLVED_TAG
+  [Full Changelog](https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...$RESOLVED_TAG)
 
   $CHANGES
 
