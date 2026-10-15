@@ -21,3 +21,5 @@ jobs:
     steps:
       - name: 🚀 Run Autolabeler
         uses: release-drafter/release-drafter/autolabeler@v7
+        with:
+          config-name: release-drafter-config.yml
