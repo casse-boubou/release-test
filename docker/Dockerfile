@@ -15,7 +15,7 @@ RUN apk update && \
     apk --no-cache add \
     dnsmasq=2.92_p2-r0 \
     bind-tools=9.18.44-r0 \
-    tini=0.19.0-r3 && \
+    tini=0.19.0-r2 && \
     rm -rf /var/cache/apk/*
 
 # Set shell pipefail before RUN with a pipe in
