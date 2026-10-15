@@ -1,9 +1,84 @@
 {
+{
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "github>casse-boubou/.github//.github/renovate.json",
+    "config:recommended",
+    "helpers:pinGitHubActionDigests",
+    ":separateMultipleMajorReleases",
+    "workarounds:bitnamiDockerImageVersioning",
+    "workarounds:clamavDockerImageVersioning",
+    "workarounds:nodeDockerVersioning",
+    "workarounds:typesNodeVersioning",
+    "workarounds:ubuntuDockerVersioning",
     "docker:pinDigests"
   ],
+  "labels": ["dependencies"],
+  "timezone": "Europe/Paris",
+  "prHourlyLimit": 0,
+  "minimumReleaseAge": "3 days",
+  "minimumReleaseAgeBehaviour": "timestamp-optional",
+  "prCreation": "not-pending",
+  "rebaseWhen": "behind-base-branch",
+  "dependencyDashboardLabels": ["dependencies"],
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["pin"],
+      "addLabels": ["pin"],
+      "commitMessagePrefix": "📌"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["major"],
+      "commitMessagePrefix": "⬆️ MAJOR",
+      "commitMessageTopic": "github-actions {{packageName}}",
+      "rebaseWhen": "conflicted"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["minor"],
+      "addLabels": ["minor"],
+      "commitMessagePrefix": "⬆️",
+      "commitMessageTopic": "github-actions {{packageName}}",
+      "groupName": "github-actions minor",
+      "rebaseWhen": "conflicted",
+      "automerge": true
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["patch"],
+      "addLabels": ["patch"],
+      "commitMessagePrefix": "⬆️",
+      "commitMessageTopic": "github-actions {{packageName}}",
+      "groupName": "github-actions patch",
+      "rebaseWhen": "conflicted",
+      "automerge": true
+    },
+    {
+      "matchManagers": ["dockerfile"],
+      "matchDatasources": ["docker"],
+      "addLabels": ["docker-images"],
+      "commitMessagePrefix": "⬆️",
+      "commitMessageTopic": "docker {{packageName}} image"
+    },
+    {
+      "matchManagers": ["custom.regex"],
+      "matchDatasources": ["repology"],
+      "addLabels": ["packages"],
+      "commitMessagePrefix": "⬆️",
+      "commitMessageTopic": "package {{depName}}",
+      "groupName": "internal packages"
+    },
+    {
+      "matchManagers": ["custom.regex"],
+      "matchDatasources": ["github-tags"],
+      "matchDepNames": ["DockerGen"],
+      "addLabels": ["app"],
+      "commitMessagePrefix": "✨",
+      "commitMessageTopic": "package {{depName}}"
+    }
+  ],
+
   "internalChecksFilter": "none",
   "internalChecksAsSuccess": true,
   "customManagers": [
@@ -28,16 +103,6 @@
         "(ARG)\\s(DOCKER_GEN.*_VERSION)=\"(?<currentValue>[0-9]+\\.[0-9]+(\\.[0-9]+){0,1})\"\\n"
       ],
       "versioningTemplate": "semver"
-    }
-  ],
-  "packageRules": [
-    {
-      "matchManagers": ["custom.regex"],
-      "matchDatasources": ["github-tags"],
-      "matchDepNames": ["DockerGen"],
-      "addLabels": ["app"],
-      "commitMessagePrefix": "✨",
-      "commitMessageTopic": "package {{depName}}"
     }
   ]
 }
