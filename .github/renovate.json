@@ -35,8 +35,9 @@
       "matchManagers": ["custom.regex"],
       "matchDatasources": ["github-tags"],
       "matchDepNames": ["DockerGen"],
+      "addLabels": ["app"],
       "commitMessagePrefix": "✨",
-      "commitMessageTopic": "{{depName}}"
+      "commitMessageTopic": "package {{depName}}"
     }
   ]
 }
