@@ -78,7 +78,7 @@
       "addLabels": ["packages"],
       "commitMessagePrefix": "⬆️",
       "commitMessageTopic": "package {{depName}}",
-      "groupName": "internal packages"
+      "groupName": null
     },
     {
       "matchManagers": ["custom.regex"],
