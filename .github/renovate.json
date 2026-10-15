@@ -73,7 +73,7 @@
     },
     {
       "matchFileNames": ["**/Dockerfile"],
-      // "matchDepNames": ["alpine"],
+      "matchDepNames": ["alpine"],
       "groupName": null,
       "bumpVersions": [
         {
@@ -81,7 +81,7 @@
           "filePatterns": ["**/renovate.json"],
           "bumpType": "sync",
           "matchStrings": [
-            "\"packageNameTemplate\":\\s*\"(?<depName>alpine)_(?<currentValue>[0-9]{1}_[0-9]{2})/\\{\\{package\\}\\}\""
+            "\"packageNameTemplate\":\\s*\"alpine_(?<currentValue>[0-9]{1}_[0-9]{2})/\\{\\{package\\}\\}\""
           ]
         }
       ]
