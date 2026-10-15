@@ -1,7 +1,7 @@
 services:
   vpn_watcher:
     container_name: vpn_watcher
-    image: ghcr.io/casse-boubou/vpn-watcher:v1.1.0
+    image: ghcr.io/casse-boubou/vpn-watcher:v1.1.0@sha256:8f34eb01744e1c0a577195354aac08795050aae400bd9a64c261056264e7d57b
     restart: unless-stopped
     security_opt:
       - no-new-privileges=true
