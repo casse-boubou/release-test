@@ -70,6 +70,14 @@
       "addLabels": ["app"],
       "commitMessagePrefix": "✨",
       "commitMessageTopic": "package {{depName}}"
+    },
+    {
+      "matchManagers": ["github-actions", "dockerfile"],
+      "matchUpdateTypes": ["pin", "pinDigest"],
+      "addLabels": ["pin"],
+      "commitMessagePrefix": "📌",
+      "groupName": "pin-dependencies"
+
     }
   ],
 

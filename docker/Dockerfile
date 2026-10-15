@@ -1,5 +1,5 @@
 # ARG necessaire pour la version des app FROM
-ARG ALPINE_BASE_IMAGE_VERSION="3.24"
+ARG ALPINE_BASE_IMAGE_VERSION="3.23"
 
 ##################################
 ## RUNNER
