@@ -65,6 +65,22 @@
       "automerge": false
     },
     {
+      "matchManagers": ["dockerfile"],
+      "matchFileNames": ["Dockerfile"],
+      "matchDatasources": ["docker"],
+      "groupName": null,
+      "bumpVersions": [
+        {
+          "name": "Synchronize Alpine with version in dockerfile",
+          "filePatterns": ["renovate.json"],
+          "bumpType": "sync",
+          "matchStrings": [
+            "\"packageNameTemplate\":\\s*\"alpine_(?<major>[0-9]{1})_(?<minor>[0-9]{2})/\\{\\{package\\}\\}\""
+          ]
+        }
+      ]
+    },
+    {
       "matchManagers": ["dockerfile", "docker-compose"],
       "matchDatasources": ["docker"],
       "addLabels": ["docker-images"],
