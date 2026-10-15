@@ -21,9 +21,10 @@
   "dependencyDashboardLabels": ["dependencies"],
   "packageRules": [
     {
-      "matchUpdateTypes": ["pin"],
+      "matchUpdateTypes": ["pin", "pinDigest"],
       "addLabels": ["pin"],
-      "commitMessagePrefix": "📌"
+      "commitMessagePrefix": "📌",
+      "groupName": "pin-dependencies"
     },
     {
       "matchManagers": ["github-actions"],
