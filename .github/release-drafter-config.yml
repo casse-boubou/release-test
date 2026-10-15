@@ -4,29 +4,6 @@ tag-template: "v$RESOLVED_VERSION"
 change-template: "- $TITLE (#$NUMBER) by $AUTHORS"
 sort-direction: ascending
 
-
-sync-labels: true
-autolabeler:
-  - labels: ['chore', 'documentation']
-    files:
-      - '*.md'
-    branch:
-      - '/docs{0,1}\/.+/'
-  - labels: ['bug']
-    stop-on-match: true
-    branch:
-      - '/fix\/.+/'
-    title:
-      - '/fix/i'
-  - labels: ['enhancement']
-    branch:
-      - '/feature\/.+/'
-    body:
-      - '/JIRA-[0-9]{1,4}/'
-  - labels: ['needs-triage', 'uncategorized']
-    fallback: true
-
-
 categories:
   - title: "🚨 Breaking changes"
     semver-increment: "major"
@@ -64,6 +41,7 @@ categories:
       labels:
         - "maintenance"
         - "ci"
+        - "pin"
   - title: "📚 Documentation"
     semver-increment: "patch"
     collapse-after: 6
@@ -81,7 +59,8 @@ categories:
     collapse-after: 6
     when:
       labels:
-        - "dependencies"
+        - "minor"
+        - "patch"
   - type: 'version-resolver'
     semver-increment: 'patch'
     collapse-after: 6

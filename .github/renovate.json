@@ -51,7 +51,24 @@
     {
       "matchManagers": ["dockerfile"],
       "matchDatasources": ["docker"],
-      "addLabels": ["docker-images"],
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["docker-images", "major"],
+      "commitMessagePrefix": "⬆️",
+      "commitMessageTopic": "docker {{packageName}} image"
+    },
+    {
+      "matchManagers": ["dockerfile"],
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["minor"],
+      "addLabels": ["docker-images", "minor"],
+      "commitMessagePrefix": "⬆️",
+      "commitMessageTopic": "docker {{packageName}} image"
+    },
+    {
+      "matchManagers": ["dockerfile"],
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["patch"],
+      "addLabels": ["docker-images", "patch"],
       "commitMessagePrefix": "⬆️",
       "commitMessageTopic": "docker {{packageName}} image"
     },
@@ -77,7 +94,6 @@
       "addLabels": ["pin"],
       "commitMessagePrefix": "📌",
       "groupName": "pin-dependencies"
-
     }
   ],
 
