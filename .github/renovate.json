@@ -21,20 +21,6 @@
   "dependencyDashboardLabels": ["dependencies"],
   "packageRules": [
     {
-      "matchManagers": ["dockerfile"],
-      "matchUpdateTypes": ["pin", "pinDigest"],
-      "addLabels": ["pin"],
-      "commitMessagePrefix": "📌",
-      "groupName": "pin-dependencies"
-    },
-    {
-      "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["pin", "pinDigest"],
-      "addLabels": ["pin"],
-      "commitMessagePrefix": "📌",
-      "groupName": "pin-github-action"
-    },
-    {
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["major"],
       "addLabels": ["major"],
@@ -84,6 +70,20 @@
       "addLabels": ["app"],
       "commitMessagePrefix": "✨",
       "commitMessageTopic": "package {{depName}}"
+    },
+    {
+      "matchManagers": ["dockerfile"],
+      "matchUpdateTypes": ["pin", "pinDigest"],
+      "addLabels": ["pin"],
+      "commitMessagePrefix": "📌",
+      "groupName": "pin-dockerfile"
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["pin", "pinDigest"],
+      "addLabels": ["pin"],
+      "commitMessagePrefix": "📌",
+      "groupName": "pin-github-action"
     }
   ],
 
