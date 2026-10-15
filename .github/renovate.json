@@ -72,18 +72,12 @@
       "commitMessageTopic": "package {{depName}}"
     },
     {
-      "matchManagers": ["dockerfile"],
+      "matchManagers": ["github-actions", "dockerfile"],
       "matchUpdateTypes": ["pin", "pinDigest"],
       "addLabels": ["pin"],
       "commitMessagePrefix": "📌",
-      "groupName": "pin-dockerfile"
-    },
-    {
-      "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["pin", "pinDigest"],
-      "addLabels": ["pin"],
-      "commitMessagePrefix": "📌",
-      "groupName": null
+      "groupName": "pin-dependencies"
+
     }
   ],
 
