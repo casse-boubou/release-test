@@ -87,13 +87,13 @@
       "commitMessageTopic": "docker {{packageName}} image",
       "groupName": null
     },
-    {
-      "matchManagers": ["custom.regex"],
-      "matchDatasources": ["repology"],
-      "addLabels": ["packages"],
-      "commitMessageTopic": "package {{depName}}",
-      "groupName": null
-    },
+    // {
+    //   "matchManagers": ["custom.regex"],
+    //   "matchDatasources": ["repology"],
+    //   "addLabels": ["packages"],
+    //   "commitMessageTopic": "package {{depName}}",
+    //   "groupName": null
+    // },
     {
       "matchManagers": ["custom.regex"],
       "matchDatasources": ["github-tags"],
