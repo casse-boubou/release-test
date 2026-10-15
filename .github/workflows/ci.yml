@@ -2,10 +2,10 @@
 name: CI
 
 on:
-  push:
-    branches-ignore:
-      - 'renovate/*'
-      - 'v*.*.*'
+  # push:
+  #   branches-ignore:
+  #     - 'renovate/*'
+  #     - 'v*.*.*'
   workflow_dispatch:
 
 concurrency:
