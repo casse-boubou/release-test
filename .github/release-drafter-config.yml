@@ -1,7 +1,8 @@
 ---
 name-template: "v$RESOLVED_VERSION"
 tag-template: "v$RESOLVED_VERSION"
-change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+# change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+change-template: "* $TITLE (#$NUMBER) $AUTHORS"
 sort-direction: ascending
 
 categories:
@@ -44,12 +45,12 @@ categories:
     when:
       labels:
         - "dependencies"
+  - type: 'version-resolver'
+    semver-increment: 'patch'
 
 
-  # **Full Changelog**: https://github.com/casse-boubou/addon-rustdesk-server/compare/v0.2.3...v0.2.4
 template: |
   ## What’s changed
-  **Full Changelog**: [Full Changelog](https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...$RESOLVED_TAG)
   [Full Changelog](https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...$RESOLVED_TAG)
 
   $CHANGES
