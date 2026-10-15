@@ -65,9 +65,14 @@
       "automerge": false
     },
     {
-      "matchManagers": ["dockerfile"],
-      "matchFileNames": ["Dockerfile"],
+      "matchManagers": ["dockerfile", "docker-compose"],
       "matchDatasources": ["docker"],
+      "addLabels": ["docker-images"],
+      "commitMessageTopic": "docker {{packageName}} image",
+      "groupName": null
+    },
+    {
+      "matchFileNames": ["**/Dockerfile"],
       "groupName": null,
       "bumpVersions": [
         {
@@ -79,13 +84,6 @@
           ]
         }
       ]
-    },
-    {
-      "matchManagers": ["dockerfile", "docker-compose"],
-      "matchDatasources": ["docker"],
-      "addLabels": ["docker-images"],
-      "commitMessageTopic": "docker {{packageName}} image",
-      "groupName": null
     },
     // {
     //   "matchManagers": ["custom.regex"],
