@@ -53,8 +53,8 @@
       "commitMessageTopic": "github-actions {{packageName}}",
       "groupName": "github-actions minor",
       "rebaseWhen": "conflicted",
-      "automerge": true
-      // "automerge": false
+      // "automerge": true
+      "automerge": false
     },
     {
       "matchManagers": ["github-actions"],
@@ -63,8 +63,8 @@
       "commitMessageTopic": "github-actions {{packageName}}",
       "groupName": "github-actions patch",
       "rebaseWhen": "conflicted",
-      "automerge": true
-      // "automerge": false
+      // "automerge": true
+      "automerge": false
     },
     {
       "matchManagers": ["dockerfile"],
