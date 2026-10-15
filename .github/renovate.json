@@ -81,18 +81,18 @@
           "filePatterns": ["**/renovate.json"],
           "bumpType": "sync",
           "matchStrings": [
-            "\"packageNameTemplate\":\\s*\"alpine_{{major}}_{{minor}}/\\{\\{package\\}\\}\""
+            "\"packageNameTemplate\":\\s*\"alpine_(?<version>[0-9]{1}_[0-9]{2})/\\{\\{package\\}\\}\""
           ]
         }
       ]
     },
-    // {
-    //   "matchManagers": ["custom.regex"],
-    //   "matchDatasources": ["repology"],
-    //   "addLabels": ["packages"],
-    //   "commitMessageTopic": "package {{depName}}",
-    //   "groupName": null
-    // },
+    {
+      "matchManagers": ["custom.regex"],
+      "matchDatasources": ["repology"],
+      "addLabels": ["packages"],
+      "commitMessageTopic": "package {{depName}}",
+      "groupName": null
+    },
     {
       "matchManagers": ["custom.regex"],
       "matchDatasources": ["github-tags"],
