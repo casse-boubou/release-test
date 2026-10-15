@@ -94,7 +94,9 @@
       "matchUpdateTypes": ["pin", "pinDigest"],
       "addLabels": ["pin"],
       "commitMessagePrefix": "📌",
-      "groupName": "pin-dependencies"
+      "groupName": "pin-dependencies",
+      // "automerge": true
+      "automerge": false
     }
   ],
 
