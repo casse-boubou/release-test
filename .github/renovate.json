@@ -64,7 +64,8 @@
       "matchManagers": ["dockerfile"],
       "matchDatasources": ["docker"],
       "addLabels": ["docker-images"],
-      "commitMessageTopic": "docker {{packageName}} image"
+      "commitMessageTopic": "docker {{packageName}} image",
+      "groupName": null
     },
     {
       "matchManagers": ["custom.regex"],
@@ -79,7 +80,8 @@
       "matchDepNames": ["DockerGen"],
       "addLabels": ["app"],
       "commitMessagePrefix": "✨",
-      "commitMessageTopic": "app {{depName}}"
+      "commitMessageTopic": "app {{depName}}",
+      "groupName": null
     },
     {
       "matchManagers": ["github-actions", "dockerfile"],
