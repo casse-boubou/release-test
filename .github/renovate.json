@@ -97,6 +97,15 @@
       "groupName": "pin-dependencies",
       // "automerge": true
       "automerge": false
+    },
+    {
+      "matchManagers": ["dockerfile", "docker-compose"],
+      "matchUpdateTypes": ["pin", "pinDigest"],
+      "addLabels": ["pin"],
+      "commitMessagePrefix": "📌",
+      "groupName": "docker-pin-dependencies",
+      // "automerge": true
+      "automerge": false
     }
   ],
 
