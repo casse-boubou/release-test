@@ -1,0 +1,22 @@
+name: Auto Label
+
+on:
+  pull_request:
+    # Autolabeler handles these event types.
+    types: [opened, reopened, synchronize, edited]
+  # Use pull_request_target to label pull requests from forks.
+  # pull_request_target:
+  #   types: [opened, reopened, synchronize, edited]
+
+permissions:
+  contents: read
+
+jobs:
+  auto_label:
+    name: 🏷️ Labeling
+    permissions:
+      pull-requests: write
+    runs-on: ubuntu-slim
+    steps:
+      - name: 🚀 Run Autolabeler
+        uses: release-drafter/release-drafter/autolabeler@v7
