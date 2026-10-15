@@ -1,0 +1,27 @@
+name: Create Release
+
+on:
+  # schedule:
+  #   - cron: "5 4 * * 5"
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Release
+        uses: softprops/action-gh-release@v3
+        with:
+          generate_release_notes: true  # Enable GitHub's built-in note generator
+          # body_path: ${{ github.workspace }}-CHANGELOG.txt
+          # Optional: Mark as draft (review before publishing)
+          # draft: true
+          # Optional: Mark as prerelease
+          # prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
