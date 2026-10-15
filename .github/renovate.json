@@ -41,24 +41,28 @@
     {
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["major"],
+      "addLabels": ["github-actions"],
       "commitMessageTopic": "github-actions {{packageName}}",
+      "groupName": "github-actions major",
       "rebaseWhen": "conflicted"
     },
     {
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["minor"],
+      "addLabels": ["github-actions"],
       "commitMessageTopic": "github-actions {{packageName}}",
       "groupName": "github-actions minor",
       "rebaseWhen": "conflicted",
-      "automerge": true
+      "automerge": false
     },
     {
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["patch"],
+      "addLabels": ["github-actions"],
       "commitMessageTopic": "github-actions {{packageName}}",
       "groupName": "github-actions patch",
       "rebaseWhen": "conflicted",
-      "automerge": true
+      "automerge": false
     },
     {
       "matchManagers": ["dockerfile"],
