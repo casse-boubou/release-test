@@ -20,6 +20,8 @@ categories:
     when:
       labels:
         - "bugfix"
+        - 'bug'
+        - 'fix'
   - title: "🚀 Enhancements"
     semver-increment: "patch"
     when:
@@ -39,8 +41,14 @@ categories:
     when:
       labels:
         - "documentation"
+  # - title: "⬆️ Dependency updates"
+  #   semver-increment: "minor"
+  #   when:
+  #     labels:
+  #       - "dependencies"
   - title: "⬆️ Dependency updates"
     semver-increment: "patch"
+    collapse-after: 0
     when:
       labels:
         - "dependencies"
