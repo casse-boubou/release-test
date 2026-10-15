@@ -75,7 +75,26 @@
     {
       "matchManagers": ["custom.regex"],
       "matchDatasources": ["repology"],
-      "addLabels": ["packages"],
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["packages", "major"],
+      "commitMessagePrefix": "⬆️",
+      "commitMessageTopic": "package {{depName}}",
+      "groupName": null
+    },
+    {
+      "matchManagers": ["custom.regex"],
+      "matchDatasources": ["repology"],
+      "matchUpdateTypes": ["minor"],
+      "addLabels": ["packages", "minor"],
+      "commitMessagePrefix": "⬆️",
+      "commitMessageTopic": "package {{depName}}",
+      "groupName": null
+    },
+    {
+      "matchManagers": ["custom.regex"],
+      "matchDatasources": ["repology"],
+      "matchUpdateTypes": ["patch"],
+      "addLabels": ["packages", "patch"],
       "commitMessagePrefix": "⬆️",
       "commitMessageTopic": "package {{depName}}",
       "groupName": null
