@@ -21,6 +21,7 @@
   "dependencyDashboardLabels": ["dependencies"],
   "packageRules": [
     {
+      "matchManagers": ["dockerfile"],
       "matchUpdateTypes": ["pin", "pinDigest"],
       "addLabels": ["pin"],
       "commitMessagePrefix": "📌",
