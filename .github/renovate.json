@@ -21,18 +21,32 @@
   "dependencyDashboardLabels": ["dependencies"],
   "packageRules": [
     {
-      "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["major"],
       "addLabels": ["major"],
       "commitMessagePrefix": "⬆️ MAJOR",
+      "groupName": null
+    },
+    {
+      "matchUpdateTypes": ["minor"],
+      "addLabels": ["minor"],
+      "commitMessagePrefix": "⬆️",
+      "groupName": null
+    },
+    {
+      "matchUpdateTypes": ["patch"],
+      "addLabels": ["patch"],
+      "commitMessagePrefix": "⬆️",
+      "groupName": null
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["major"],
       "commitMessageTopic": "github-actions {{packageName}}",
       "rebaseWhen": "conflicted"
     },
     {
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["minor"],
-      "addLabels": ["minor"],
-      "commitMessagePrefix": "⬆️",
       "commitMessageTopic": "github-actions {{packageName}}",
       "groupName": "github-actions minor",
       "rebaseWhen": "conflicted",
@@ -41,8 +55,6 @@
     {
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["patch"],
-      "addLabels": ["patch"],
-      "commitMessagePrefix": "⬆️",
       "commitMessageTopic": "github-actions {{packageName}}",
       "groupName": "github-actions patch",
       "rebaseWhen": "conflicted",
@@ -51,51 +63,13 @@
     {
       "matchManagers": ["dockerfile"],
       "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["major"],
-      "addLabels": ["docker-images", "major"],
-      "commitMessagePrefix": "⬆️",
-      "commitMessageTopic": "docker {{packageName}} image"
-    },
-    {
-      "matchManagers": ["dockerfile"],
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["minor"],
-      "addLabels": ["docker-images", "minor"],
-      "commitMessagePrefix": "⬆️",
-      "commitMessageTopic": "docker {{packageName}} image"
-    },
-    {
-      "matchManagers": ["dockerfile"],
-      "matchDatasources": ["docker"],
-      "matchUpdateTypes": ["patch"],
-      "addLabels": ["docker-images", "patch"],
-      "commitMessagePrefix": "⬆️",
+      "addLabels": ["docker-images"],
       "commitMessageTopic": "docker {{packageName}} image"
     },
     {
       "matchManagers": ["custom.regex"],
       "matchDatasources": ["repology"],
-      "matchUpdateTypes": ["major"],
-      "addLabels": ["packages", "major"],
-      "commitMessagePrefix": "⬆️",
-      "commitMessageTopic": "package {{depName}}",
-      "groupName": null
-    },
-    {
-      "matchManagers": ["custom.regex"],
-      "matchDatasources": ["repology"],
-      "matchUpdateTypes": ["minor"],
-      "addLabels": ["packages", "minor"],
-      "commitMessagePrefix": "⬆️",
-      "commitMessageTopic": "package {{depName}}",
-      "groupName": null
-    },
-    {
-      "matchManagers": ["custom.regex"],
-      "matchDatasources": ["repology"],
-      "matchUpdateTypes": ["patch"],
-      "addLabels": ["packages", "patch"],
-      "commitMessagePrefix": "⬆️",
+      "addLabels": ["packages"],
       "commitMessageTopic": "package {{depName}}",
       "groupName": null
     },
@@ -105,7 +79,7 @@
       "matchDepNames": ["DockerGen"],
       "addLabels": ["app"],
       "commitMessagePrefix": "✨",
-      "commitMessageTopic": "package {{depName}}"
+      "commitMessageTopic": "app {{depName}}"
     },
     {
       "matchManagers": ["github-actions", "dockerfile"],
