@@ -90,7 +90,7 @@
       "groupName": null
     },
     {
-      "matchManagers": ["github-actions", "dockerfile", "docker-compose"],
+      "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["pin", "pinDigest"],
       "addLabels": ["pin"],
       "commitMessagePrefix": "📌",
