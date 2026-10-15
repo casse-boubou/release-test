@@ -40,29 +40,27 @@
     },
     {
       "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["major"],
       "addLabels": ["github-actions"],
       "commitMessageTopic": "github-actions {{packageName}}",
-      "groupName": "github-actions major",
-      "rebaseWhen": "conflicted"
+      "rebaseWhen": "conflicted",
+      "groupName": null
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "matchUpdateTypes": ["major"],
+      "groupName": "github-actions major"
     },
     {
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["minor"],
-      "addLabels": ["github-actions"],
-      "commitMessageTopic": "github-actions {{packageName}}",
       "groupName": "github-actions minor",
-      "rebaseWhen": "conflicted",
       // "automerge": true
       "automerge": false
     },
     {
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["patch"],
-      "addLabels": ["github-actions"],
-      "commitMessageTopic": "github-actions {{packageName}}",
       "groupName": "github-actions patch",
-      "rebaseWhen": "conflicted",
       // "automerge": true
       "automerge": false
     },
@@ -90,20 +88,11 @@
       "groupName": null
     },
     {
-      "matchManagers": ["github-actions"],
+      "matchManagers": ["github-actions", "dockerfile", "docker-compose"],
       "matchUpdateTypes": ["pin", "pinDigest"],
       "addLabels": ["pin"],
       "commitMessagePrefix": "📌",
       "groupName": "pin-dependencies",
-      // "automerge": true
-      "automerge": false
-    },
-    {
-      "matchManagers": ["dockerfile", "docker-compose"],
-      "matchUpdateTypes": ["pin", "pinDigest"],
-      "addLabels": ["pin"],
-      "commitMessagePrefix": "📌",
-      "groupName": "docker-pin-dependencies",
       // "automerge": true
       "automerge": false
     }
