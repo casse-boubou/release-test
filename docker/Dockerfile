@@ -8,14 +8,14 @@ FROM alpine:${ALPINE_BASE_IMAGE_VERSION}
 
 ARG CONTAINER_BUILD_VERSION
 ENV CONTAINER_BUILD_VERSION=${CONTAINER_BUILD_VERSION}
-ARG DOCKER_GEN_VERSION="0.17.1"
+ARG DOCKER_GEN_VERSION="0.17.0"
 ENV DOCKER_HOST=unix:///var/run/docker.sock
 
 RUN apk update && \
     apk --no-cache add \
     dnsmasq=2.92_p2-r0 \
-    bind-tools=9.20.26-r0 \
-    tini=0.19.0-r3 && \
+    bind-tools=9.18.44-r0 \
+    tini=0.19.0-r2 && \
     rm -rf /var/cache/apk/*
 
 # Set shell pipefail before RUN with a pipe in
