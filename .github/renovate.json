@@ -74,7 +74,6 @@
     {
       "matchFileNames": ["**/Dockerfile"],
       "matchDepNames": ["alpine"],
-      "extractVersion": "^(?<version>\\[0-9]+\\.\\[0-9]+)",
       "bumpVersions": [
         {
           "name": "Synchronize Alpine with version in dockerfile",
@@ -85,6 +84,13 @@
           ]
         }
       ],
+      "postUpgradeTasks": {
+        "commands": [
+          "sed -i -E 's/alpine_[0-9]+.[0-9]+/alpine_{{{newMajor}}}_{{{newMinor}}}/' .github/renovate.json"
+        ],
+        "fileFilters": [".github/renovate.json"],
+        "executionMode": "branch"
+      },
       "groupName": null
     },
     {

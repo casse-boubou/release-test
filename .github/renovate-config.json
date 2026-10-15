@@ -2,6 +2,7 @@
   "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
   "platform": "github",
   "detectHostRulesFromEnv": true,
+  "allowedCommands": ["^sed "],
   "repositories": [
     "casse-boubou/release-test"
   ]
