@@ -3,7 +3,8 @@ name: verif scan
 
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "*/25 * * * *"
+      timezone: "Europe/Paris"
   workflow_dispatch:
 
 permissions: {}

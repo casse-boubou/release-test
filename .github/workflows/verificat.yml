@@ -3,7 +3,8 @@ name: verificat
 
 on:
   schedule:
-    - cron: "54 13 * * *"
+    - cron: "7,37 * * * *"
+      timezone: "Europe/Paris"
 
 permissions: {}
 
