@@ -9,6 +9,8 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       # check out code from GitHub
       - name: Checkout repository
