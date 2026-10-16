@@ -56,21 +56,21 @@ categories:
   #       - "dependencies"
   - title: "⬆️ Dependency updates"
     exclusive: true
-    collapse-after: 6
     when:
       labels:
         - "minor"
     semver-increment: "minor"
+    collapse-after: 6
   - title: "⬆️ Dependency updates"
     exclusive: true
-    collapse-after: 6
     when:
       labels:
         - "patch"
     semver-increment: "patch"
-  - type: 'version-resolver'
     collapse-after: 6
+  - type: 'version-resolver'
     semver-increment: 'patch'
+    collapse-after: 6
 
 
 template: |
