@@ -5,49 +5,49 @@ change-template: "- $TITLE (#$NUMBER) by $AUTHORS"
 sort-direction: ascending
 
 categories:
-  - title: "🚨 Breaking changes"
-    semver-increment: "major"
-    collapse-after: 6
-    when:
-      labels:
-        - "breaking-change"
-  - title: "✨ New features"
-    semver-increment: "minor"
-    collapse-after: 6
-    when:
-      labels:
-        - "new-feature"
-  - title: "🐛 Bug fixes"
-    semver-increment: "patch"
-    collapse-after: 6
-    when:
-      labels:
-        - "bugfix"
-        - 'bug'
-        - 'fix'
-  - title: "🚀 Enhancements"
-    semver-increment: "patch"
-    collapse-after: 6
-    when:
-      labels:
-        - "enhancement"
-        - "refactor"
-        - "performance"
-        - "chore"
-  - title: "🧰 Maintenance"
-    semver-increment: "patch"
-    collapse-after: 6
-    when:
-      labels:
-        - "maintenance"
-        - "ci"
-        - "pin"
-  - title: "📚 Documentation"
-    semver-increment: "patch"
-    collapse-after: 6
-    when:
-      labels:
-        - "documentation"
+  # - title: "🚨 Breaking changes"
+  #   semver-increment: "major"
+  #   collapse-after: 6
+  #   when:
+  #     labels:
+  #       - "breaking-change"
+  # - title: "✨ New features"
+  #   semver-increment: "minor"
+  #   collapse-after: 6
+  #   when:
+  #     labels:
+  #       - "new-feature"
+  # - title: "🐛 Bug fixes"
+  #   semver-increment: "patch"
+  #   collapse-after: 6
+  #   when:
+  #     labels:
+  #       - "bugfix"
+  #       - 'bug'
+  #       - 'fix'
+  # - title: "🚀 Enhancements"
+  #   semver-increment: "patch"
+  #   collapse-after: 6
+  #   when:
+  #     labels:
+  #       - "enhancement"
+  #       - "refactor"
+  #       - "performance"
+  #       - "chore"
+  # - title: "🧰 Maintenance"
+  #   semver-increment: "patch"
+  #   collapse-after: 6
+  #   when:
+  #     labels:
+  #       - "maintenance"
+  #       - "ci"
+  #       - "pin"
+  # - title: "📚 Documentation"
+  #   semver-increment: "patch"
+  #   collapse-after: 6
+  #   when:
+  #     labels:
+  #       - "documentation"
   # - title: "⬆️ Dependency updates"
   #   semver-increment: "minor"
     # collapse-after: 6
@@ -60,6 +60,18 @@ categories:
     when:
       labels:
         - "minor"
+        - "patch"
+  - title: "⬆️ Dependency 2"
+    semver-increment: "patch"
+    collapse-after: 6
+    when:
+      labels:
+        - "minor"
+  - title: "⬆️ Dependency 3"
+    semver-increment: "patch"
+    collapse-after: 6
+    when:
+      labels:
         - "patch"
   - type: 'version-resolver'
     semver-increment: 'patch'
