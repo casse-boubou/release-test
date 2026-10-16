@@ -88,7 +88,7 @@
         "commands": [
           "sed -i -E 's/alpine_[0-9]+.[0-9]+/alpine_{{{newMajor}}}_{{{newMinor}}}/' .github/renovate.json"
         ],
-        "fileFilters": [".github/renovate.json"],
+        "fileFilters": [".github/renovat1.json"],
         "executionMode": "branch"
       },
       "groupName": null
