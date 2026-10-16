@@ -2,7 +2,7 @@ name: Renovate
 
 on:
   schedule:
-    - cron: "24 12 * * *"
+    - cron: "25 12 * * *"
   workflow_dispatch:
 
 permissions: {}
