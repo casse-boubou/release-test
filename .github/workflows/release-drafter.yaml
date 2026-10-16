@@ -25,14 +25,7 @@ jobs:
         with:
           config-name: release-drafter-config.yml
           # config-name: .github:release-drafter-config.yml
-      - name: echo
-        run: echo "${{ fromJSON(steps.release.outputs.labels)[0] }}"
-      - name: echo
-        run: echo "${{ fromJSON(steps.release.outputs.tag_name)[0] }}"
-      - name: echo
-        run: echo "${{ fromJSON(steps.release.outputs.name)[0] }}"
-      - name: echo
-        run: echo "${{ fromJSON(steps.release.outputs.id)[0] }}"
+          dry-run: true
   # publish_release:
   #   name: 📝 Publish release
   #   runs-on: ubuntu-slim
