@@ -43,24 +43,11 @@
       "addLabels": ["github-actions"],
       "commitMessageTopic": "github-actions {{packageName}}",
       "rebaseWhen": "conflicted",
-      "groupName": null
+      "groupName": "{{#if isMajor}}github-actions major{{elif isMinor}}github-actions minor{{elif isPatch}}github-actions patch{{else}}github-actions{{/if}}"
     },
     {
       "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["major"],
-      "groupName": "github-actions major"
-    },
-    {
-      "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["minor"],
-      "groupName": "github-actions minor",
-      // "automerge": true
-      "automerge": false
-    },
-    {
-      "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["patch"],
-      "groupName": "github-actions patch",
+      "matchUpdateTypes": ["minor", "patch"],
       // "automerge": true
       "automerge": false
     },
