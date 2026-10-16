@@ -61,6 +61,7 @@
     {
       // Synchronize Alpine with version in dockerfile
       "matchFileNames": ["**/Dockerfile"],
+      "matchManagers": ["dockerfile"],
       "matchDepNames": ["alpine"],
       // bumpVersions would be more appropriate, but it doesn't allow changing _ to . in the version template.
       // Instead we use postUpgradeTasks
