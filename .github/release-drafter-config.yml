@@ -62,7 +62,7 @@ categories:
         - "minor"
         - "patch"
   - title: "⬆️ Dependency 2"
-    semver-increment: "patch"
+    semver-increment: "minor"
     collapse-after: 6
     when:
       labels:
