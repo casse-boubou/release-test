@@ -5,6 +5,23 @@ change-template: "- $TITLE (#$NUMBER) by $AUTHORS"
 sort-direction: ascending
 
 categories:
+  - type: 'version-resolver'
+    semver-increment: 'major'
+    when:
+      labels:
+        - "major"
+  - type: 'version-resolver'
+    semver-increment: 'minor'
+    when:
+      labels:
+        - "minor"
+  - type: 'version-resolver'
+    semver-increment: 'patch'
+    when:
+      labels:
+        - "patch"
+  - type: 'version-resolver'
+    semver-increment: 'patch'
   # - title: "🚨 Breaking changes"
   #   semver-increment: "major"
   #   collapse-after: 6
@@ -60,23 +77,6 @@ categories:
       labels:
         - "dependencies"
     collapse-after: 6
-  # - type: 'version-resolver'
-  #   semver-increment: 'major'
-  #   when:
-  #     labels:
-  #       - "major"
-  # - type: 'version-resolver'
-  #   semver-increment: 'minor'
-  #   when:
-  #     labels:
-  #       - "minor"
-  - type: 'version-resolver'
-    semver-increment: 'patch'
-    when:
-      labels:
-        - "patch"
-  - type: 'version-resolver'
-    semver-increment: 'patch'
 
 
 template: |
