@@ -140,7 +140,7 @@
       "customType": "regex",
       "managerFilePatterns": ["/(^|/)Dockerfile$/"],
       "datasourceTemplate": "repology",
-      "packageNameTemplate": "alpine_3_23/{{package}}",
+      "packageNameTemplate": "alpine_3_24/{{package}}",
       "depNameTemplate": "{{package}}",
       "matchStrings": [
         "\\s(?<package>[a-z0-9][a-z0-9-_]+)=(?<currentValue>[a-z0-9-_.]+)\\s"
