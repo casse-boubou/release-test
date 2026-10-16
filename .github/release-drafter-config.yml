@@ -68,7 +68,8 @@ categories:
         - "patch"
     semver-increment: "patch"
     collapse-after: 6
-  - type: 'version-resolver'
+  - title: "Other changes"
+    type: 'version-resolver'
     semver-increment: 'patch'
     collapse-after: 6
 
