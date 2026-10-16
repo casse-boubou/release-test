@@ -43,7 +43,7 @@
       "addLabels": ["github-actions"],
       "commitMessageTopic": "github-actions {{packageName}}",
       "rebaseWhen": "conflicted",
-      "groupName": "{{#if isMajor}}github-actions major{{elif isMinor}}github-actions minor{{elif isPatch}}github-actions patch{{else}}github-actions{{/if}}"
+      "groupName": "{{#if isMajor}}github-actions major{{else}}{{#if isMinor}}github-actions minor{{else}}{{#if isPatch}}github-actions patch{{else}}github-actions{{/if}}{{/if}}{{/if}}"
     },
     {
       "matchManagers": ["github-actions"],
