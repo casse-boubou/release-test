@@ -73,7 +73,7 @@
     },
     {
       "matchFileNames": ["**/Dockerfile"],
-      // "matchDepNames": ["alpine"],
+      "matchDepNames": ["alpine"],
       // "bumpVersions": [
       //   {
       //     "name": "Synchronize Alpine with version in dockerfile",
