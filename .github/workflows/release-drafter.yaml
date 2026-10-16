@@ -10,36 +10,17 @@ on:
 
 
 jobs:
-  changelog:
-    name: Generate changelog
-    runs-on: ubuntu-latest
+  update_release_draft:
+    name: ✏️ Draft release
+    runs-on: ubuntu-slim
+    permissions:
+      contents: write
+      pull-requests: read
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-      - name: Generate a changelog
-        uses: orhun/git-cliff-action@v4
-        id: git-cliff
-        with:
-          config: cliff.toml
-          args: --verbose
+      - name: 🚀 Run Release Drafter
+        uses: release-drafter/release-drafter@978bb0b30c5ee8cdd332ced253758157150d43f0 # v7.10.0
         env:
-          OUTPUT: CHANGELOG.md
-      - name: Print the changelog
-        run: cat "${{ steps.git-cliff.outputs.changelog }}"
-
-  # update_release_draft:
-  #   name: ✏️ Draft release
-  #   runs-on: ubuntu-slim
-  #   permissions:
-  #     contents: write
-  #     pull-requests: read
-  #   steps:
-  #     - name: 🚀 Run Release Drafter
-  #       uses: release-drafter/release-drafter@978bb0b30c5ee8cdd332ced253758157150d43f0 # v7.10.0
-  #       env:
-  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #       with:
-  #         config-name: release-drafter-config.yml
-  #         # config-name: .github:release-drafter-config.yml
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          config-name: release-drafter-config.yml
+          # config-name: .github:release-drafter-config.yml

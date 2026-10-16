@@ -85,11 +85,25 @@
       "groupName": null
     },
     {
+      "matchManagers": ["dockerfile", "docker-compose"],
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["patch"],
+      // "automerge": true
+      "automerge": false
+    },
+    {
       "matchManagers": ["custom.regex"],
       "matchDatasources": ["repology"],
       "addLabels": ["packages"],
       "commitMessageTopic": "package {{depName}}",
       "groupName": null
+    },
+    {
+      "matchManagers": ["custom.regex"],
+      "matchDatasources": ["repology"],
+      "matchUpdateTypes": ["minor", "patch"],
+      // "automerge": true
+      "automerge": false
     },
     {
       "matchManagers": ["custom.regex"],
@@ -99,6 +113,14 @@
       "commitMessagePrefix": "✨",
       "commitMessageTopic": "app {{depName}}",
       "groupName": null
+    },
+    {
+      "matchManagers": ["custom.regex"],
+      "matchDatasources": ["github-tags"],
+      "matchDepNames": ["DockerGen"],
+      "matchUpdateTypes": ["patch"],
+      // "automerge": true
+      "automerge": false
     },
     {
       "matchManagers": ["github-actions", "dockerfile", "docker-compose"],
