@@ -55,23 +55,16 @@ categories:
   #     labels:
   #       - "dependencies"
   - title: "⬆️ Dependency updates"
-    semver-increment: "patch"
-    collapse-after: 6
-    when:
-      labels:
-        - "minor"
-        - "patch"
-  - title: "⬆️ Dependency 2"
     semver-increment: "minor"
-    collapse-after: 6
     exclusive: true
+    collapse-after: 6
     when:
       labels:
         - "minor"
-  - title: "⬆️ Dependency 3"
+  - title: "⬆️ Dependency updates"
     semver-increment: "patch"
-    collapse-after: 6
     exclusive: true
+    collapse-after: 6
     when:
       labels:
         - "patch"
