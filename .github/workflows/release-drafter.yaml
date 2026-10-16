@@ -2,11 +2,11 @@
 name: Release Drafter
 
 on:
-  # push:
-  #   branches:
-  #     - main
-  # schedule:
-  #   - cron: "5 4 * * 5"
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: "5 4 * * 5"
   workflow_dispatch:
 
 
@@ -20,10 +20,7 @@ jobs:
     steps:
       # Draft the release
       - name: 🚀 Draf Release
-        # if: ${{ github.event_name == 'push' }}
-        if: |
-            github.event_name == 'push' ||
-            github.event_name == 'workflow_dispatch'
+        if: ${{ github.event_name == 'push' }}
         uses: release-drafter/release-drafter@978bb0b30c5ee8cdd332ced253758157150d43f0 # v7.10.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -32,10 +29,10 @@ jobs:
           # config-name: .github:release-drafter-config.yml
       # Publish the release
       - name: 🚀 Publish Release
-        if: ${{ github.event_name == 'schedule' }}
-        # if: |
-        #     github.event_name == 'schedule' ||
-        #     github.event_name == 'workflow_dispatch'
+        # if: ${{ github.event_name == 'schedule' }}
+        if: |
+            github.event_name == 'schedule' ||
+            github.event_name == 'workflow_dispatch'
         uses: release-drafter/release-drafter@978bb0b30c5ee8cdd332ced253758157150d43f0 # v7.10.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
