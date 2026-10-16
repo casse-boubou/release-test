@@ -136,12 +136,5 @@
       ],
       "versioningTemplate": "semver"
     }
-  ],
-
-  "logLevelRemap": [
-    {
-      "matchMessage": "/bumpVersions/",
-      "newLogLevel": "debug"
-    }
   ]
 }
