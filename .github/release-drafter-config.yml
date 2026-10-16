@@ -65,12 +65,6 @@ categories:
   #   when:
   #     labels:
   #       - "documentation"
-  # - title: "⬆️ Dependency updates"
-  #   semver-increment: "minor"
-    # collapse-after: 6
-  #   when:
-  #     labels:
-  #       - "dependencies"
   - title: "⬆️ Dependency updates"
     exclusive: true
     when:
