@@ -30,7 +30,7 @@ jobs:
           # config-name: .github:release-drafter-config.yml
       - name: Deploy user service
         # if: contains(fromJSON(steps.draft.outputs.body), 'No changes')
-        run: echo "oui" && echo "${{ steps.draft.outputs.body }}"
+        run: echo "oui" && echo "${{ fromJSON(steps.draft.outputs.body) }}"
       # # Publish the release
       # - name: 🚀 Publish Release
       #   id: publish
