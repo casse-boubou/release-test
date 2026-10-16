@@ -11,8 +11,8 @@ on:
 
 
 jobs:
-  draft_release:
-    name: ✏️ Draft release
+  draft_and_publish_release:
+    name: Draft or publish release
     runs-on: ubuntu-slim
     permissions:
       contents: write
