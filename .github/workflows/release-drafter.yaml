@@ -19,7 +19,7 @@ jobs:
       pull-requests: read
     steps:
       # Draft the release
-      - name: 🚀 Draf Release
+      - name: ✏️ Draf Release
         id: draft
         uses: release-drafter/release-drafter@978bb0b30c5ee8cdd332ced253758157150d43f0 # v7.10.0
         env:

@@ -1,5 +1,5 @@
 # ARG necessaire pour la version des app FROM
-ARG ALPINE_BASE_IMAGE_VERSION="3.23@sha256:85fe1e81d6758c208f3e1eed4338a1997e19d4be002d4dd32d3100c9a8c010a0"
+ARG ALPINE_BASE_IMAGE_VERSION="3.23"
 
 ##################################
 ## RUNNER
@@ -14,7 +14,7 @@ ENV DOCKER_HOST=unix:///var/run/docker.sock
 RUN apk update && \
     apk --no-cache add \
     dnsmasq=2.92_p2-r0 \
-    bind-tools=9.20.29-r0 \
+    bind-tools=9.18.44-r0 \
     tini=0.19.0-r2 && \
     rm -rf /var/cache/apk/*
 
