@@ -59,7 +59,7 @@ categories:
     when:
       labels:
         - "minor"
-    semver-increment: "minor"
+    semver-increment: "patch"
     collapse-after: 6
   - title: "⬆️ Dependency updates"
     exclusive: true
