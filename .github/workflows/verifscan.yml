@@ -2,7 +2,7 @@ name: verif scan
 
 on:
   schedule:
-    - cron: "33 12 * * *"
+    - cron: "*/15 * * * *"
   workflow_dispatch:
 
 permissions: {}
