@@ -77,7 +77,7 @@ categories:
 
 template: |
   ## What’s changed
-  [Full Changelog](https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...$RESOLVED_TAG)
+  [Full Changelog from $PREVIOUS_TAG to $RESOLVED_TAG](https://github.com/$OWNER/$REPOSITORY/compare/$PREVIOUS_TAG...$RESOLVED_TAG)
 
   $CHANGES
 
