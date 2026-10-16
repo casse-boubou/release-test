@@ -9,7 +9,7 @@ on:
 
 
 jobs:
-  update_release_draft:
+  draft_release:
     name: ✏️ Draft release
     runs-on: ubuntu-slim
     permissions:
@@ -17,10 +17,40 @@ jobs:
       pull-requests: read
     steps:
       # Draft the release
-      - name: 🚀 Run Release Drafter
+      - name: 🚀 Draf Release
+        id: release
         uses: release-drafter/release-drafter@978bb0b30c5ee8cdd332ced253758157150d43f0 # v7.10.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           config-name: release-drafter-config.yml
           # config-name: .github:release-drafter-config.yml
+      - name: echo
+        run: echo "${{ fromJSON(steps.release.outputs.upload_url) }}"
+      - name: echo
+        run: echo "${{ fromJSON(steps.release.outputs.html_url) }}"
+      - name: echo
+        run: echo "${{ fromJSON(steps.release.outputs.body) }}"
+      - name: echo
+        run: echo "${{ fromJSON(steps.release.outputs.labels) }}"
+      - name: echo
+        run: echo "${{ fromJSON(steps.release.outputs.tag_name) }}"
+      - name: echo
+        run: echo "${{ fromJSON(steps.release.outputs.name) }}"
+      - name: echo
+        run: echo "${{ fromJSON(steps.release.outputs.id) }}"
+  # publish_release:
+  #   name: 📝 Publish release
+  #   runs-on: ubuntu-slim
+  #   permissions:
+  #     contents: write
+  #     pull-requests: read
+  #   steps:
+  #     # Draft the release
+  #     - name: 🚀 Publish Release
+  #       uses: release-drafter/release-drafter@978bb0b30c5ee8cdd332ced253758157150d43f0 # v7.10.0
+  #       env:
+  #         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #       with:
+  #         config-name: release-drafter-config.yml
+  #         # config-name: .github:release-drafter-config.yml
