@@ -58,20 +58,23 @@ categories:
     exclusive: true
     when:
       labels:
-        - "minor"
-    semver-increment: "minor"
+        - "dependencies"
     collapse-after: 6
-  - title: "⬆️ Dependency updates"
-    exclusive: true
+  - type: 'version-resolver'
+    semver-increment: 'major'
+    when:
+      labels:
+        - "major"
+  - type: 'version-resolver'
+    semver-increment: 'minor'
+    when:
+      labels:
+        - "minor"
+  - type: 'version-resolver'
+    semver-increment: 'patch'
     when:
       labels:
         - "patch"
-    semver-increment: "patch"
-    collapse-after: 6
-  - title: "Other changes"
-    type: 'version-resolver'
-    semver-increment: 'patch'
-    collapse-after: 6
 
 
 template: |
