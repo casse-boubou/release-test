@@ -60,16 +60,16 @@ categories:
       labels:
         - "dependencies"
     collapse-after: 6
-  - type: 'version-resolver'
-    semver-increment: 'major'
-    when:
-      labels:
-        - "major"
-  - type: 'version-resolver'
-    semver-increment: 'minor'
-    when:
-      labels:
-        - "minor"
+  # - type: 'version-resolver'
+  #   semver-increment: 'major'
+  #   when:
+  #     labels:
+  #       - "major"
+  # - type: 'version-resolver'
+  #   semver-increment: 'minor'
+  #   when:
+  #     labels:
+  #       - "minor"
   - type: 'version-resolver'
     semver-increment: 'patch'
     when:
