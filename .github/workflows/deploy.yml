@@ -2,14 +2,14 @@
 name: Deploy
 
 on:
-  # pull_request:
-  #   types:
-  #     - opened
-  #     - reopened
-  #     - synchronize
-  # release:
-  #   types:
-  #     - published
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+  release:
+    types:
+      - published
   workflow_dispatch:
 
 concurrency:
