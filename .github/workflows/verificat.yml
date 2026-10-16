@@ -3,7 +3,7 @@ name: verificat
 
 on:
   schedule:
-    - cron: "26 13 * * *"
+    - cron: "54 13 * * *"
 
 permissions: {}
 
