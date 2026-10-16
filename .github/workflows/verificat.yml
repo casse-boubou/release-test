@@ -1,8 +1,9 @@
+---
 name: verificat
 
 on:
   schedule:
-    - cron: "46 12 * * *"
+    - cron: "49 12 * * *"
 
 permissions: {}
 
