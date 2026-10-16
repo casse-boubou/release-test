@@ -23,7 +23,7 @@ jobs:
         id: git-cliff
         with:
           config: cliff.toml
-          args: --verbose
+          args: -vv
         env:
           OUTPUT: CHANGELOG.md
       - name: Print the changelog
