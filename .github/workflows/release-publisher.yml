@@ -21,25 +21,7 @@ jobs:
         uses: softprops/action-gh-release@3d0d9888cb7fd7b750713d6e236d1fcb99157228 # v3.0.2
         with:
           draft: true
-          # generate_release_notes: true  # Enable GitHub's built-in note generator
+          generate_release_notes: true  # Enable GitHub's built-in note generator
           # append_body: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: echo
-        run: echo "${{ steps.publish.outputs }}"
-      - name: echo
-        run: echo "${{ steps.publish.outputs.url }}"
-      - name: echo
-        run: echo "${{ steps.publish.outputs.id }}"
-      - name: echo
-        run: echo "${{ steps.publish.outputs.assets }}"
-      - name: echo
-        run: echo "${{ steps.publish.outputs.upload_url }}"
-      - name: echo
-        run: echo "${{ fromJSON(steps.publish.outputs.url)[0] }}"
-      - name: echo
-        run: echo "${{ fromJSON(steps.publish.outputs.id)[0] }}"
-      - name: echo
-        run: echo "${{ fromJSON(steps.publish.outputs.assets)[0] }}"
-      - name: echo
-        run: echo "${{ fromJSON(steps.publish.outputs.upload_url)[0].browser_download_url }}"
