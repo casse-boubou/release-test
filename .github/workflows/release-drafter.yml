@@ -11,15 +11,16 @@ on:
 
 
 jobs:
-  draft_and_publish_release:
+  draft_release:
     name: Draft and publish if needed
     runs-on: ubuntu-slim
     permissions:
       contents: write
       pull-requests: read
     outputs:
-      deploy: ${{ steps.publish.outputs.is_need }}
       tag_name: ${{ steps.draft.outputs.tag_name }}
+      body: ${{ steps.draft.outputs.body }}
+      id: ${{ steps.draft.outputs.id }}
     steps:
       # Draft the release
       - name: ✏️ Draf release
@@ -31,15 +32,24 @@ jobs:
           config-name: release-drafter-config.yml
           # config-name: .github:release-drafter-config.yml
 
-      # Decide if release need Publish and Deploy
+  publish_release:
+    needs: draft_release
+    name: Publish if needed
+    runs-on: ubuntu-slim
+    permissions:
+      contents: write
+    outputs:
+      deploy: ${{ steps.publish.outputs.is_need }}
+    steps:
+      # Decide if release need Publish
       - name: 📦 Publish release if needed
         id: publish
         env:
           EVENT_NAME: ${{ github.event_name }}
-          BODY: ${{ steps.draft.outputs.body }}
+          BODY: ${{ needs.draft_release.outputs.body }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
-          RELEASE_ID: ${{ steps.draft.outputs.id }}
+          RELEASE_ID: ${{ needs.draft_release.outputs.id }}
         run: |
           if [ "$EVENT_NAME" = "schedule" ] && [[ "$BODY" != *"No changes"* ]]; then
             echo "Release will be publish and deploy"
@@ -50,11 +60,11 @@ jobs:
             echo "is_need=false" >> "$GITHUB_OUTPUT"
           fi
 
-
-
   deploy_release:
-    needs: draft_and_publish_release
-    if: needs.draft_and_publish_release.outputs.deploy == 'true'
+    needs:
+      - draft_release
+      - publish_release
+    if: needs.publish_release.outputs.deploy == 'true'
     permissions:
       contents: read # needed for job 'lint_zizmor' and 'build'
       actions: read # needed for job 'lint_zizmor'
@@ -62,5 +72,5 @@ jobs:
       id-token: write # needed for job 'build'
     uses: $/.github/workflows/deploy.yml
     with:
-      tag: ${{ needs.draft_and_publish_release.outputs.tag_name }}
+      tag: ${{ needs.draft_release.outputs.tag_name }}
 
