@@ -60,7 +60,7 @@ jobs:
             echo "is_need=false" >> "$GITHUB_OUTPUT"
           fi
 
-  deploy_release:
+  deploy_packages:
     needs:
       - draft_release
       - publish_release
