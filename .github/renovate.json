@@ -124,7 +124,7 @@
     },
     {
       "matchManagers": ["github-actions", "dockerfile", "docker-compose"],
-      "matchUpdateTypes": ["pin", "pinDigest"],
+      "matchUpdateTypes": ["pin", "pinDigest", "digest"],
       "addLabels": ["pin"],
       "commitMessagePrefix": "📌",
       "groupName": "pin-dependencies",
