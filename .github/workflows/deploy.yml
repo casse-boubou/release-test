@@ -15,6 +15,11 @@ on:
       is_call:
         type: boolean
         default: true
+      tag:
+        default: ""
+        description: Tag for the release from ReleaseDrafter
+        required: false
+        type: string
   workflow_dispatch:
 
 concurrency:
@@ -183,7 +188,7 @@ jobs:
           id: container_version
           env:
             GITHUB_SHA: ${{ github.sha }}
-            TAG_NAME: ${{ github.event_name == 'release' && github.ref_name || '' }}
+            TAG_NAME: ${{ inputs.tag || (github.event_name == 'release' && github.ref_name) || '' }}
           run: |
             # Set container build version
             if [ -n "$TAG_NAME" ]; then
