@@ -41,7 +41,7 @@ jobs:
           REPO: ${{ github.repository }}
           RELEASE_ID: ${{ steps.draft.outputs.id }}
         run: |
-          if [ "$EVENT_NAME" = "schedule" ] && [[ "$BODY" != *"No changes"* ]]; then
+          if [ "$EVENT_NAME" = "workflow_dispatch" ] && [[ "$BODY" != *"No changes"* ]]; then
             echo "Release will be publish and deploy"
             gh api -X PATCH "repos/${REPO}/releases/${RELEASE_ID}" -F draft=false
             echo "is_need=true" >> "$GITHUB_OUTPUT"
