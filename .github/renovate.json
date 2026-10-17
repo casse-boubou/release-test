@@ -92,6 +92,14 @@
       "automerge": false
     },
     {
+      "matchManagers": ["dockerfile", "docker-compose"],
+      "matchDatasources": ["docker"],
+      "matchUpdateTypes": ["digest"],
+      "addLabels": ["pin"],
+      // "automerge": true
+      "automerge": false
+    },
+    {
       "matchManagers": ["custom.regex"],
       "matchDatasources": ["repology"],
       "addLabels": ["packages"],
