@@ -34,7 +34,7 @@ jobs:
 
   publish_release:
     needs: draft_release
-    name: Publish if needed
+    name: Publish
     runs-on: ubuntu-slim
     permissions:
       contents: write
@@ -65,6 +65,7 @@ jobs:
       - draft_release
       - publish_release
     if: needs.publish_release.outputs.deploy == 'true'
+    name: Deploy packages
     permissions:
       contents: read # needed for job 'lint_zizmor' and 'build'
       actions: read # needed for job 'lint_zizmor'
