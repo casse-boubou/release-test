@@ -52,6 +52,7 @@ jobs:
           uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
           with:
             persist-credentials: false
+            ref: ${{ inputs.tag || github.sha }}
         - name: Run zizmor 🌈
           uses: zizmorcore/zizmor-action@cc914d7f3750a2d13d75c7f184a1060aa0e9d482 # v0.6.4
           with:
@@ -66,6 +67,7 @@ jobs:
           uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
           with:
             persist-credentials: false
+            ref: ${{ inputs.tag || github.sha }}
         # check bash integrity
         - name: Run ShellCheck
           uses: ludeeus/action-shellcheck@00cae500b08a931fb5698e11e79bfbd38e612a38 # 2.0.0
@@ -84,6 +86,7 @@ jobs:
           uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
           with:
             persist-credentials: false
+            ref: ${{ inputs.tag || github.sha }}
         # check dockerfile integrity
         - name: Run hadolint
           uses: hadolint/hadolint-action@06be81baf89a55ffd0e24b8f04a4185738dd3387 # v3.5.0
@@ -100,6 +103,7 @@ jobs:
           uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
           with:
             persist-credentials: false
+            ref: ${{ inputs.tag || github.sha }}
         # check compose.yml integrity
         - name: Lint docker-compose.yml
           run: |
@@ -114,6 +118,7 @@ jobs:
           uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
           with:
             persist-credentials: false
+            ref: ${{ inputs.tag || github.sha }}
         # check compose.yml integrity
         - name: Check dockerfile
           uses: casse-boubou/gitaction-test@9c513483c678e497c5f9e982a34c95f8ffd913d6 # main
@@ -143,6 +148,7 @@ jobs:
           uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
           with:
             persist-credentials: false
+            ref: ${{ inputs.tag || github.sha }}
 
         # Set up QEMU for allow possibility to buil multi arch
         # https://github.com/docker/setup-qemu-action
@@ -161,7 +167,7 @@ jobs:
           if: |
             github.event_name == 'pull_request' ||
             github.event_name == 'release' ||
-            inputs.is_call == 'true'
+            inputs.is_call == true
           uses: docker/login-action@dbcb813823bdd20940b903addbd779551569679f # v4.6.0
           with:
             registry: ${{ env.REGISTRY }}
@@ -181,8 +187,8 @@ jobs:
               # Following TAG are always apply
               type=sha,prefix=commit_sha-,format=short,enable=true
               # Following TAG are applied IF event from 'release' or worflow_call
-              type=raw,value=latest,enable=${{ github.event_name == 'release' || inputs.is_call == 'true'}}
-              type=semver,pattern={{version}},prefix=v,enable=${{ github.event_name == 'release'  || inputs.is_call == 'true'}}
+              type=raw,value=latest,enable=${{ github.event_name == 'release' || inputs.is_call == true }}
+              type=semver,pattern={{version}},prefix=v,value=${{ inputs.tag || github.ref_name }},enable=${{ github.event_name == 'release'  || inputs.is_call == true }}
 
         - name: Set container build version
           id: container_version
@@ -208,7 +214,7 @@ jobs:
             context: ./docker
             file: ./docker/Dockerfile
             platforms: linux/amd64
-            push: ${{ github.event_name == 'pull_request' || github.event_name == 'release' || inputs.is_call == 'true'}}
+            push: ${{ github.event_name == 'pull_request' || github.event_name == 'release' || inputs.is_call == true }}
             sbom: true
             tags: ${{ steps.metadata.outputs.tags }}
             labels: ${{ steps.metadata.outputs.labels }}
@@ -220,7 +226,7 @@ jobs:
         # Install the cosign tool except on PR
         # https://github.com/sigstore/cosign-installer
         - name: Install cosign
-          if: ${{ github.event_name != 'pull_request' }}
+          if: ${{ github.event_name == 'release' || inputs.is_call == true }}
           uses: sigstore/cosign-installer@cad07c2e89fa2edd6e2d7bab4c1aa38e53f76003 # v4.1.1
 
         # Sign the resulting Docker image digest except on PRs.
@@ -229,7 +235,7 @@ jobs:
         # transparency data even for private images, pass --force to cosign below.
         # https://github.com/sigstore/cosign
         - name: Sign the published Docker image
-          if: ${{ github.event_name != 'pull_request' }}
+          if: ${{ github.event_name == 'release' || inputs.is_call == true }}
           env:
             TAGS: ${{ steps.metadata.outputs.tags }}
             DIGEST: ${{ steps.build-and-push.outputs.digest }}
