@@ -1,5 +1,6 @@
 # ARG necessaire pour la version des app FROM
 ARG ALPINE_BASE_IMAGE_VERSION="3.23"
+ARG PYTHON_BASE_IMAGE_VERSION="3.14.7-alpine3.24"
 
 ##################################
 ## RUNNER
@@ -43,3 +44,11 @@ HEALTHCHECK --interval=30s --timeout=15s --retries=5 \
     CMD ["sh","healthcheck"]
 
 ENTRYPOINT ["/sbin/tini", "--", "sh", "/docker-entrypoint.sh"]
+
+
+
+
+##################################
+## RUNNER
+##################################
+FROM python:${PYTHON_BASE_IMAGE_VERSION} AS runner
