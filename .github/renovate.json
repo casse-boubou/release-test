@@ -123,6 +123,15 @@
       "automerge": false
     },
     {
+      "matchDatasources": ["npm"],
+      "addLabels": ["npm"]
+    },
+    {
+      "matchDatasources": ["docker"],
+      "matchManagers": ["dockerfile"],
+      "addLabels": ["{{depName}}"]
+    },
+    {
       "matchManagers": ["github-actions", "dockerfile", "docker-compose"],
       "matchUpdateTypes": ["pin", "pinDigest", "digest"],
       "addLabels": ["pin"],
