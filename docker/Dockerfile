@@ -1,5 +1,5 @@
 # ARG necessaire pour la version des app FROM
-ARG ALPINE_BASE_IMAGE_VERSION="3.23"
+ARG ALPINE_BASE_IMAGE_VERSION="3.24@sha256:be2656061b536c1883c4034790e21d0a09c5aaaf51968b89368a3c0371ea2c9a"
 ARG PYTHON_BASE_IMAGE_VERSION="3.14.7-alpine3.24"
 
 ##################################
