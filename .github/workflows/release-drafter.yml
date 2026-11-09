@@ -69,6 +69,7 @@ jobs:
           REPO: ${{ github.repository }}
           RELEASE_ID: ${{ needs.draft_release.outputs.id }}
         run: |
+          echo "$BODY"
           if [ "$EVENT_NAME" = "schedule" ] && [[ "$BODY" != *"No changes"* ]]; then
             echo "Release will be publish and deploy"
             gh api -X PATCH "repos/${REPO}/releases/${RELEASE_ID}" -F draft=false
