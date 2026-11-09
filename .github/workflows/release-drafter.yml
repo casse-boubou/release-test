@@ -104,11 +104,12 @@ jobs:
 
           echo "PR total: $TOTAL"
           echo "PR FILTERED: $FILTERED"
+          echo "---- POST FILTERED ----"
 
-          if [ "$EVENT_NAME" = "schedule" ] && [ "$TOTAL" -gt 0 ]; then
-            echo "Release will be publish and deploy"
-            gh api -X PATCH "repos/${REPO}/releases/${RELEASE_ID}" -F draft=false
-            echo "deploy_is_need=true" >> "$GITHUB_OUTPUT"
+          # if [ "$EVENT_NAME" = "schedule" ] && [ "$TOTAL" -gt 0 ]; then
+          if [ "$TOTAL" -gt 0 ]; then
+            echo "GO TO publish"
+            echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
           else
             echo "Release do not need publish"
             echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
