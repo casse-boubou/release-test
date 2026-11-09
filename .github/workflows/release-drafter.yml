@@ -85,13 +85,46 @@ jobs:
           #   echo "Release do not need publish"
           #   echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
           # fi
-          if [[ "$BODY" == *"Update docker-compose ghcr.io/${REPO}"* ]]; then
-            echo "GO TO publish"
-            echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
+          # if [[ "$BODY" == *"Update docker-compose ghcr.io/${REPO}"* ]]; then
+          #   echo "GO TO publish"
+          #   echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
+          # else
+          #   echo "Release do not need publish"
+          #   echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
+          # fi
+
+
+          # Lignes de PR : "- ⬆️ Update ... (#59) by @me" (on ignore "* No changes")
+          ENTRIES=$(printf '%s\n' "$BODY" | grep -E '^[[:space:]]*- ' || true)
+
+          TOTAL=$(printf '%s\n' "$ENTRIES" | grep -c . || true)
+
+          # PR qui ne sont PAS des updates du docker-compose de ce repo
+          OTHERS=$(printf '%s\n' "$ENTRIES" \
+            | grep -viF "Update docker-compose ghcr.io/${REPO}" \
+            | grep -c . || true)
+
+          echo "PR total: $TOTAL / autres que docker-compose: $OTHERS"
+
+          if [ "$EVENT_NAME" = "schedule" ] && [ "$TOTAL" -gt 0 ] && [ "$OTHERS" -gt 0 ]; then
+            echo "Release will be publish and deploy"
+            gh api -X PATCH "repos/${REPO}/releases/${RELEASE_ID}" -F draft=false
+            echo "deploy_is_need=true" >> "$GITHUB_OUTPUT"
           else
             echo "Release do not need publish"
             echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
           fi
+
+
+
+
+
+
+
+
+
+
+
 
   deploy_packages:
     needs:
