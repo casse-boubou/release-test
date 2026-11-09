@@ -69,62 +69,35 @@ jobs:
           REPO: ${{ github.repository }}
           RELEASE_ID: ${{ needs.draft_release.outputs.id }}
         run: |
-          echo "---- PRE BODY ----"
-          echo "$BODY"
-          echo "---- POST BODY ----"
-          echo "---- PRE REPO ----"
-          echo "$REPO"
-          REPO="casse-boubou/vpn-watcher"
-          echo "$REPO"
-          echo "---- POST REPO ----"
-          # if [ "$EVENT_NAME" = "schedule" ] && [[ "$BODY" != *"No changes"* ]]; then
-          #   echo "Release will be publish and deploy"
-          #   gh api -X PATCH "repos/${REPO}/releases/${RELEASE_ID}" -F draft=false
-          #   echo "deploy_is_need=true" >> "$GITHUB_OUTPUT"
-          # else
-          #   echo "Release do not need publish"
-          #   echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
-          # fi
-          # if [[ "$BODY" == *"Update docker-compose ghcr.io/${REPO}"* ]]; then
-          #   echo "GO TO publish"
-          #   echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
-          # else
-          #   echo "Release do not need publish"
-          #   echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
-          # fi
+          FILTERED=""
+          IGNORE_SECTION=false
 
+          while IFS= read -r line; do
+            if [[ "$line" == "## "* ]]; then
+              if [[ "$line" == *"📚 Documentation" ]]; then
+                IGNORE_SECTION=true
+              else
+                IGNORE_SECTION=false
+              fi
+            fi
 
-          # On retire la section "Documentation" du body, puis on compte les PR restantes
-          FILTERED=$(printf '%s\n' "$BODY" | awk '
-            /^## /          { skip = ($0 ~ /Documentation/) }
-            !skip           { print }
-          ')
+            if [ "$IGNORE_SECTION" = false ]; then
+              FILTERED+="$line"$'\n'
+            fi
+          done <<< "$BODY"
 
           TOTAL=$(printf '%s\n' "$FILTERED" | grep -cE '^[[:space:]]*- ' || true)
-
-          echo "PR total: $TOTAL"
-          echo "PR FILTERED: $FILTERED"
-          echo "---- POST FILTERED ----"
-
-          # if [ "$EVENT_NAME" = "schedule" ] && [ "$TOTAL" -gt 0 ]; then
-          if [ "$TOTAL" -gt 0 ]; then
-            echo "GO TO publish"
-            echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
+          echo "--- FILTERED ---"
+          echo "$FILTERED"
+          echo "TOTAL=$TOTAL"
+          if [ "$EVENT_NAME" = "schedule" ] && [ "$TOTAL" -gt 0 ]; then
+            echo "Release will be publish and deploy"
+            gh api -X PATCH "repos/${REPO}/releases/${RELEASE_ID}" -F draft=false
+            echo "deploy_is_need=true" >> "$GITHUB_OUTPUT"
           else
             echo "Release do not need publish"
             echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
           fi
-
-
-
-
-
-
-
-
-
-
-
 
   deploy_packages:
     needs:
