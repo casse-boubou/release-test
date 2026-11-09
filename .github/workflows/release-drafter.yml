@@ -72,10 +72,20 @@ jobs:
           echo "---- PRE BODY ----"
           echo "$BODY"
           echo "---- POST BODY ----"
-          if [ "$EVENT_NAME" = "schedule" ] && [[ "$BODY" != *"No changes"* ]]; then
-            echo "Release will be publish and deploy"
-            gh api -X PATCH "repos/${REPO}/releases/${RELEASE_ID}" -F draft=false
-            echo "deploy_is_need=true" >> "$GITHUB_OUTPUT"
+          echo "---- PRE REPO ----"
+          echo "$REPO"
+          echo "---- POST REPO ----"
+          # if [ "$EVENT_NAME" = "schedule" ] && [[ "$BODY" != *"No changes"* ]]; then
+          #   echo "Release will be publish and deploy"
+          #   gh api -X PATCH "repos/${REPO}/releases/${RELEASE_ID}" -F draft=false
+          #   echo "deploy_is_need=true" >> "$GITHUB_OUTPUT"
+          # else
+          #   echo "Release do not need publish"
+          #   echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
+          # fi
+          if [[ "$BODY" == *"Update docker-compose ${REPO}"* ]]; then
+            echo "GO TO publish"
+            echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
           else
             echo "Release do not need publish"
             echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
