@@ -87,9 +87,7 @@ jobs:
           done <<< "$BODY"
 
           TOTAL=$(printf '%s\n' "$FILTERED" | grep -cE '^[[:space:]]*- ' || true)
-          echo "--- FILTERED ---"
-          echo "$FILTERED"
-          echo "TOTAL=$TOTAL"
+
           if [ "$EVENT_NAME" = "schedule" ] && [ "$TOTAL" -gt 0 ]; then
             echo "Release will be publish and deploy"
             gh api -X PATCH "repos/${REPO}/releases/${RELEASE_ID}" -F draft=false
