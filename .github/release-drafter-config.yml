@@ -9,9 +9,14 @@ categories:
     semver-increment: 'major'
     when:
       labels:
-        - "major"
+        - "super-major"
   - type: 'version-resolver'
     semver-increment: 'minor'
+    when:
+      labels:
+        - "major"
+  - type: 'version-resolver'
+    semver-increment: 'patch'
     when:
       labels:
         - "minor"
@@ -23,19 +28,19 @@ categories:
   - type: 'version-resolver'
     semver-increment: 'patch'
   - title: "🚨 Breaking changes"
+    semver-increment: "major"
     exclusive: true
     collapse-after: 6
     when:
       labels:
         - "breaking-change"
-    semver-increment: "major"
   - title: "✨ New features"
+    semver-increment: "minor"
     exclusive: true
     collapse-after: 6
     when:
       labels:
         - "new-feature"
-    semver-increment: "minor"
   - title: "🐛 Bug fixes"
     exclusive: true
     collapse-after: 6

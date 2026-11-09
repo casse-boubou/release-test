@@ -32,14 +32,32 @@ jobs:
           config-name: release-drafter-config.yml
           # config-name: .github:release-drafter-config.yml
 
+  # check_pinned_package:
+  #   name: Docker Pinned Package Check
+  #   runs-on: ubuntu-latest
+  #   permissions:
+  #     contents: read
+  #   steps:
+  #     # check out code from GitHub
+  #     - name: Checkout repository
+  #       uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+  #       with:
+  #         persist-credentials: false
+  #     # check compose.yml integrity
+  #     - name: Check dockerfile
+  #       uses: casse-boubou/gitaction-test@9c513483c678e497c5f9e982a34c95f8ffd913d6 # main
+  #       with:
+  #         dockerfile: 'docker/Dockerfile'
+
   publish_release:
-    needs: draft_release
+    needs:
+      - draft_release
     name: Publish release
     runs-on: ubuntu-slim
     permissions:
       contents: write
     outputs:
-      deploy: ${{ steps.publish.outputs.is_need }}
+      deploy: ${{ steps.publish.outputs.deploy_is_need }}
     steps:
       # Decide if release need Publish
       - name: 📦 Publish release if needed
@@ -54,10 +72,10 @@ jobs:
           if [ "$EVENT_NAME" = "schedule" ] && [[ "$BODY" != *"No changes"* ]]; then
             echo "Release will be publish and deploy"
             gh api -X PATCH "repos/${REPO}/releases/${RELEASE_ID}" -F draft=false
-            echo "is_need=true" >> "$GITHUB_OUTPUT"
+            echo "deploy_is_need=true" >> "$GITHUB_OUTPUT"
           else
             echo "Release do not need publish"
-            echo "is_need=false" >> "$GITHUB_OUTPUT"
+            echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
           fi
 
   deploy_packages:
