@@ -106,23 +106,6 @@
       "automerge": false
     },
     {
-      "matchManagers": ["custom.regex"],
-      "matchDatasources": ["github-tags"],
-      "matchDepNames": ["DockerGen"],
-      "addLabels": ["app"],
-      "commitMessagePrefix": "✨",
-      "commitMessageTopic": "app {{depName}}",
-      "groupName": null
-    },
-    {
-      "matchManagers": ["custom.regex"],
-      "matchDatasources": ["github-tags"],
-      "matchDepNames": ["DockerGen"],
-      "matchUpdateTypes": ["patch"],
-      // "automerge": true
-      "automerge": false
-    },
-    {
       "matchDatasources": ["npm"],
       "addLabels": ["npm"]
     },
@@ -139,9 +122,25 @@
       "groupName": "pin-dependencies",
       // "automerge": true
       "automerge": false
+    },
+    {
+      "matchManagers": ["custom.regex"],
+      "matchDatasources": ["github-tags"],
+      "matchDepNames": ["DockerGen"],
+      "addLabels": ["app"],
+      "commitMessagePrefix": "✨",
+      "commitMessageTopic": "app {{depName}}",
+      "groupName": null
+    },
+    {
+      "matchManagers": ["custom.regex"],
+      "matchDatasources": ["github-tags"],
+      "matchDepNames": ["DockerGen"],
+      "matchUpdateTypes": ["patch"],
+      // "automerge": true
+      "automerge": false
     }
   ],
-
   "internalChecksFilter": "none",
   "internalChecksAsSuccess": true,
   "customManagers": [
