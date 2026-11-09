@@ -52,7 +52,7 @@
       "automerge": false
     },
     {
-      "matchManagers": ["dockerfile", "docker-compose"],
+      "matchManagers": ["dockerfile"],
       "matchDatasources": ["docker"],
       "addLabels": ["docker-images"],
       "commitMessageTopic": "docker {{packageName}} image",
@@ -137,6 +137,15 @@
       "matchDatasources": ["github-tags"],
       "matchDepNames": ["DockerGen"],
       "matchUpdateTypes": ["patch"],
+      // "automerge": true
+      "automerge": false
+    },
+    {
+      "matchManagers": ["docker-compose"],
+      "matchDatasources": ["docker"],
+      "matchFileNames": ["docker/docker-compose.yml"],
+      "addLabels": ["docker-compose"],
+      "commitMessageTopic": "docker-compose {{packageName}} image",
       // "automerge": true
       "automerge": false
     }
