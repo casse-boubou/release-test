@@ -94,13 +94,16 @@ jobs:
           # fi
 
 
-          # On retire la section "documentation" du body, puis on compte les PR restantes
+          # On retire la section "Documentation" du body, puis on compte les PR restantes
           FILTERED=$(printf '%s\n' "$BODY" | awk '
-            /^## /          { skip = ($0 ~ /documentation/) }
+            /^## /          { skip = ($0 ~ /Documentation/) }
             !skip           { print }
           ')
 
           TOTAL=$(printf '%s\n' "$FILTERED" | grep -cE '^[[:space:]]*- ' || true)
+
+          echo "PR total: $TOTAL"
+          echo "PR FILTERED: $FILTERED"
 
           if [ "$EVENT_NAME" = "schedule" ] && [ "$TOTAL" -gt 0 ]; then
             echo "Release will be publish and deploy"
