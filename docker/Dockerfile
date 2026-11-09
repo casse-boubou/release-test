@@ -15,7 +15,7 @@ ENV DOCKER_HOST=unix:///var/run/docker.sock
 RUN apk update && \
     apk --no-cache add \
     dnsmasq=2.92_p2-r0 \
-    bind-tools=9.20.29-r0 \
+    bind-tools=9.20.30-r0 \
     tini=0.19.0-r2 && \
     rm -rf /var/cache/apk/*
 
