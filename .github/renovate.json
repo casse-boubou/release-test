@@ -144,7 +144,7 @@
       "matchManagers": ["docker-compose"],
       "matchDatasources": ["docker"],
       "matchFileNames": ["docker/docker-compose.yml"],
-      "addLabels": ["docker-compose"],
+      "addLabels": ["documentation"],
       "commitMessageTopic": "docker-compose {{packageName}} image",
       // "automerge": true
       "automerge": false
