@@ -74,6 +74,8 @@ jobs:
           echo "---- POST BODY ----"
           echo "---- PRE REPO ----"
           echo "$REPO"
+          REPO="casse-boubou/vpn-watcher"
+          echo "$REPO"
           echo "---- POST REPO ----"
           # if [ "$EVENT_NAME" = "schedule" ] && [[ "$BODY" != *"No changes"* ]]; then
           #   echo "Release will be publish and deploy"
@@ -83,7 +85,7 @@ jobs:
           #   echo "Release do not need publish"
           #   echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
           # fi
-          if [[ "$BODY" == *"Update docker-compose ${REPO}"* ]]; then
+          if [[ "$BODY" == *"Update docker-compose ghcr.io/${REPO}"* ]]; then
             echo "GO TO publish"
             echo "deploy_is_need=false" >> "$GITHUB_OUTPUT"
           else
